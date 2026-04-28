@@ -5,9 +5,13 @@ import { ref } from 'vue';
 const showForm = ref(false);
 const newMemo = ref("");
 const memos = ref ([]);
-
+const errorMessage = ref("");
 
 function addMemo() {
+    if (!newMemo.value) {
+        errorMessage.value = "Please enter a memo";
+        return;
+    }
     memos.value.push({
         id: Date.now(),
         content: newMemo.value,
@@ -47,6 +51,7 @@ function addMemo() {
                 <button @click="showForm = false" class="close-btn">
                     &times;
                 </button>
+                <p v-if="errorMessage"> {{ errorMessage }}</p>
                 <textarea v-model="newMemo" name="memo" id="memo" cols="30" rows="10"></textarea>
                 <button @click="addMemo" class="save-btn">Save</button>
             </div>
