@@ -23,6 +23,10 @@ function addMemo() {
     showForm.value = false;
 }
 
+function deleteMemo(id) {
+    memos.value = memos.value.filter((memo) => memo.id !== id)
+}
+
 </script>
 
 <template>
@@ -40,9 +44,12 @@ function addMemo() {
                     <p class="card-content">
                         {{ memo.content }}
                     </p>
-                    <p class="card-date">
-                        {{ memo.date }}
-                    </p>
+                    <div class="card-footer">
+                        <p class="card-date">
+                            {{ memo.date }}
+                        </p>
+                        <button @click="deleteMemo(memo.id)">🚮</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,5 +239,11 @@ header {
     border: none;
     font-size: 25px;
     cursor: pointer;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
