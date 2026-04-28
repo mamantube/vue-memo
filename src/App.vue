@@ -8,8 +8,34 @@
                     <div class="btn-text">Add Note</div>
                 </button>
             </header>
-            <div>[Card]</div>
+            <div class="card-container">
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+                <div class="card">
+                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
+                    <p class="card-date">12/12/26</p>
+                </div>
+            </div>
         </div>
+
     </main>
 </template>
 
@@ -122,5 +148,22 @@ header {
     right: 15px;
     height: 4px;
     top: calc(50% - 2px);
+}
+
+.card {
+    width: 225px;
+    height: 225px;
+    padding: 10px;
+    background-color: #ffa61f;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 </style>
