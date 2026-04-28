@@ -3,6 +3,21 @@
 import { ref } from 'vue';
 
 const showForm = ref(false);
+const newMemo = ref("");
+const memos = ref ([]);
+
+
+function addMemo() {
+    memos.value.push({
+        id: Date.now(),
+        content: newMemo.value,
+        date: new Date().toLocaleDateString("en-GB"),
+        backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+    })
+
+    newMemo.value = "";
+    showForm.value = false;
+}
 
 </script>
 
@@ -17,29 +32,13 @@ const showForm = ref(false);
                 </button>
             </header>
             <div class="card-container">
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
-                </div>
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
-                </div>
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
-                </div>
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
-                </div>
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
-                </div>
-                <div class="card">
-                    <p class="card-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nulla molestias quasi dicta et expedita, voluptas perspiciatis. Nam, autem quasi!</p>
-                    <p class="card-date">12/12/26</p>
+                <div v-for="(memo, index) in memos" :key="index" class="card" :style="{backgroundColor: memo.backgroundColor}">
+                    <p class="card-content">
+                        {{ memo.content }}
+                    </p>
+                    <p class="card-date">
+                        {{ memo.date }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -48,8 +47,8 @@ const showForm = ref(false);
                 <button @click="showForm = false" class="close-btn">
                     &times;
                 </button>
-                <textarea name="memo" id="memo" cols="30" rows="10"></textarea>
-                <button class="save-btn">Save</button>
+                <textarea v-model="newMemo" name="memo" id="memo" cols="30" rows="10"></textarea>
+                <button @click="addMemo" class="save-btn">Save</button>
             </div>
         </div>
     </main>
